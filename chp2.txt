@@ -1,0 +1,66 @@
+1. wnat to perform a series of commands and make user of control flow expressions like conditionals or loops
+
+2. Shell script
+  - Most shells have their own scripting language with variables, control flow and its own syntax
+  - shell scripting is optimized for performing shell-related tasks
+  - primitives in shell scripting
+    - creating command pipelines
+    - save results into files
+    - reading from standard input
+
+ 3. assign variables: 
+    - e.g
+      - assignment: foo=bar (no space. In general, the space character will perform argument splitting)
+      - access: $foo
+  - strinng in bash can be defined with ' and " delimiters
+    - strings delimited with ' are literal strings and will not substitute variable values
+    - " delimited strings will substitute variable values
+    ```
+    foo=bar
+    echo "$foo"
+    echo '$foo'
+    ```
+    
+4. control flows: `if`, `case`, `while`, `for`
+    
+5. functions:
+    ```
+    mcd() {
+      mkdir -p "$1"
+      cd "$1"
+    }
+    ```
+    - `$0`: name of the script
+    - `$1` to `$9`: Argument of the script. $1 is the first argument and so on.
+    - `$@`: all the arguments
+    - `$#`: number of arguments
+    - `$?`: return code of the previous command
+    - `$$`: process identification number (PID) for the current script
+    - `!!`: Entir last command, including arguments. A common pattern is to execute a command only for it 
+    to fial due to missing permissions; you can quickly re-execute command with sudo by oding sudo !!
+    - `$_`: last argument from last command. If you are in an interactive shell, you can also quickly get this value by typing 
+    `ESC` followed by `.` or `Alt+.`
+   
+   6. Commands often returns output using STDOUT, errors thru STDERR, and a return code to report errors 
+   in a more script-friendly manner. 
+     - 0: OK
+     - anything different from 0: error occurred
+     - commands can also be separated within the same line using a semicolon `;`.
+     
+   7. logical operator:
+    - &&: and
+    - ||: or
+    - true, false
+    
+    8. substituion
+     - command substitution: `$(CMD)`
+     - process substitution: `<(CMD)` will execute `CMD` and place the output in a temporary file and substitute the `<()` with the file's name.
+      - eg: `diff <(ls foo) <(ls bar)`
+     
+     
+     
+     
+     
+     
+     
+  
